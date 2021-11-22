@@ -30,7 +30,7 @@ void xarray_test(void)
 	printk("[0] item=%p\n", item);
 
 	ret = xa_store(&array, 0, (void *)item, GFP_KERNEL); 
-	for (i = 1; i <= 10; i++) { 
+	for (i = 1; i <= 10; i += 2) { 
 		item = kmalloc(sizeof(*item), GFP_KERNEL);
 		printk("[%d] item=%p, ", i, item);
 		item->index = i;
@@ -39,7 +39,7 @@ void xarray_test(void)
 		printk("ret=%p\n", ret); 
 		xa_user_dump(&array);
 	}	
-
+/*
 	ret = xa_load(&array, 0);
 	printk("load ret=%p, %d, %d\n",
 		ret, ((struct item *)ret)->index, ((struct item *)ret)->order); 
@@ -53,7 +53,7 @@ void xarray_test(void)
 	ret = xa_erase(&array, 7); 
 	printk("erase ret=%p, %d, %d\n",
 		ret, ((struct item *)ret)->index, ((struct item *)ret)->order);
- 
+*/
 	i = 9;
 	ret = xa_find(&array, &i, ULONG_MAX, XA_PRESENT); 
 	printk("find ret=%p, %d, %d\n",

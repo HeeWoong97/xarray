@@ -1,5 +1,7 @@
-obj-m	:= h.o
-h-objs	:= calclock.o xarray_parallel.o
+#obj-m	:= h.o
+#h-objs	:= calclock.o xarray_parallel.o
+
+obj-m = xarray.o
 
 KERNEL_DIR	:= /lib/modules/$(shell uname -r)/build
 PWD			:= $(shell pwd)
